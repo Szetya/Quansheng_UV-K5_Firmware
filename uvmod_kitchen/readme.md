@@ -10,7 +10,7 @@
  - [start command prompt](https://www.google.com/search?q=how+to+open+command+prompt+windows) in `uvmod_kitchen` directory
  - run command `build.bat`
  - look for any errors
- - now you can flash new firmware file named `k5_v2.01.26_MODDED.bin` 
+ - now you can flash new firmware file named `k5_v2.01.26_MODDED.bin` ([video by K5YVY](https://youtu.be/ctlDHpQKjD4?t=24))
 
 ## List of mods
 (not in any particular order)
@@ -45,6 +45,17 @@ By default Q logo is set. To set up your own image paint a b&w bitmap image of s
 ![qs_logo](https://github.com/amnemonic/Quansheng_UV-K5_Firmware/assets/29899901/7fece61e-ee21-47f4-a84d-da23b8c0721d)
 
 <hr>
+
+
+### `mod_custom_bootscreen_narrow.py`
+Basically same as above mod but allows to use smaller logo therefore less space at the end of the file.
+By default Do7oo logo is set. To set up your own image paint a b&w bitmap image of width 128px then convert it to array using application like [LCD Assistant](http://en.radzio.dxp.pl/bitmap_converter/)
+
+Customization: before drawing logo, screen buffer is filled with value defined in `clean_pattern` variable. if you set it to `0xFF` then screen will be filled "black", if `0x00` then screen will be clean. 
+
+<hr>
+
+
 
 ### `mod_change_contrast.py`
 Customization:
@@ -156,4 +167,18 @@ By default block frequencies between 118 and 137MHz.
 
 
 ℹ️ Please do not use this mod together with `mod_enable_tx_50to850.py` or `mod_disable_tx_completely.py`
+<hr>
+
+
+### `mod_ota_qrg.py`
+Customization:
+```python
+AIR_COPY_FREQ_HZ = 433_600_000
+```
+
+Default value for copying setting over the air aka "AIR COPY" is 410.025 MHz. You can change that default value using this mod.
+
+![aircopy](https://github.com/amnemonic/Quansheng_UV-K5_Firmware/assets/29899901/fe0b7525-e94d-472e-bcc6-c346e9c71fda)
+
+
 <hr>

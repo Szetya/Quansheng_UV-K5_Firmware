@@ -1,7 +1,14 @@
 ## Various utility scripts useful when modding / reversing firmware. 
 All scripts uses my library `libuvk5.py`. Scripts tested only on windows.
-<hr>
 
+To read write access COM Port (Serial/USB Cable) must be the Serial Module installed into Python.
+
+Install from command prompt/cmd the serial module for Python: 
+```
+pip install pyserial
+```
+Do not confuse with `serial` module which is incompatible with this lib.
+<hr>
 
 ### `fw_unpack.py`
 Usage sample:
@@ -87,4 +94,27 @@ Script just reboots device. Command not produce any output in normal situation. 
 <hr>
 
 
+### `batt_calibrator.py`
+Arguments:
+```
+batt_calibrator.py <COMx> <read | write  val0 val1 val2 val3 val4 val5 | calibrate>
+```
 
+To calibrate ADC so battery voltage display more accurately invoke `batt_calibrator.py COM1 calibrate` like below:
+```
+> batt_calibrator.py COM1 calibrate
+Enter voltage from multimeter and press enter:
+```
+now follow steps: 
+- connect radio to PC
+- power on radio
+- lay your radio with display to the bottom and battery up
+- measure voltage on two exposed pad on bottom of the battery
+- wait till voltage stabilizes
+- write measuder voltage in format `1.23` or `1,23` it shoudl not matter
+- hit enter
+- reboot radio
+
+You can backup current calibration values by starting `batt_calibrator.py COM1 read`
+
+To read more about values and its meaning please refer to [documentation](https://github.com/amnemonic/Quansheng_UV-K5_Firmware/blob/main/docs/cfg_mem_map.md#battery-calibration-area).
